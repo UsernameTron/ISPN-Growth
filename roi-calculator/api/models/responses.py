@@ -2,19 +2,21 @@
 
 from datetime import datetime, timezone
 
+from decimal import Decimal
+
 from pydantic import BaseModel, Field
 
 
 class CostBreakdown(BaseModel):
     """Itemized cost breakdown."""
 
-    labor: float
-    training_ramp: float
-    after_hours: float
-    technology: float
-    management_overhead: float
-    qa_monitoring: float
-    total: float
+    labor: Decimal
+    training_ramp: Decimal
+    after_hours: Decimal
+    technology: Decimal
+    management_overhead: Decimal
+    qa_monitoring: Decimal
+    total: Decimal
 
 
 class ROICalculationResponse(BaseModel):
@@ -23,8 +25,8 @@ class ROICalculationResponse(BaseModel):
     success: bool = True
     in_house: CostBreakdown
     ispn: CostBreakdown
-    annual_savings: float
-    savings_percentage: float
+    annual_savings: Decimal
+    savings_percentage: Decimal
     breakeven_subscribers: int
     recommendation: str  # "outsource" | "in_house" | "flex"
     recommendation_detail: str

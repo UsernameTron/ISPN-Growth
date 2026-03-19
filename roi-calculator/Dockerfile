@@ -1,4 +1,15 @@
-# ---- Build stage ----
+# ---- Frontend build stage ----
+FROM node:20-slim AS frontend-builder
+
+WORKDIR /frontend
+
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm ci
+
+COPY frontend/ ./
+RUN npm run build
+
+# ---- Python build stage ----
 FROM python:3.12-slim AS builder
 
 WORKDIR /build
@@ -20,6 +31,9 @@ COPY --from=builder /install /usr/local
 
 # Copy application code
 COPY ./api ./api
+
+# Copy built frontend assets
+COPY --from=frontend-builder /frontend/dist /app/static
 
 # Security: no root
 USER appuser

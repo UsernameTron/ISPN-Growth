@@ -1,5 +1,7 @@
 """Pydantic request models for ROI Calculator."""
 
+from decimal import Decimal
+
 from pydantic import BaseModel, Field
 
 
@@ -9,7 +11,7 @@ class ROICalculationRequest(BaseModel):
     subscriber_count: int = Field(..., gt=0, description="Total subscriber count")
     monthly_call_volume: int = Field(..., gt=0, description="Monthly inbound call volume")
     support_staff_headcount: int = Field(..., gt=0, description="Current support staff count")
-    avg_hourly_wage: float = Field(..., gt=0, description="Average hourly wage in USD")
+    avg_hourly_wage: Decimal = Field(..., gt=0, description="Average hourly wage in USD")
 
     # Optional with smart defaults
     services_internet: bool = Field(True, description="Provides internet support")
