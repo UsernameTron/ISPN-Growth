@@ -1,0 +1,31 @@
+partner_id,partner_name,services,contract_tier
+P001,Summit Broadband,"internet,voice,video",premium
+P002,Prairie Connect,"internet,voice",standard
+P003,Lakeshore Communications,"internet,voice,managed_wifi",standard
+P004,Blue Ridge Telecom,"internet",basic
+P005,Heartland Fiber,"internet,voice,video,managed_wifi",premium
+P006,Coastal Networks,"internet,voice",standard
+P007,Mountain View ISP,"internet",basic
+P008,Valley Stream Communications,"internet,voice,video",standard
+P009,Great Plains Wireless,"internet,managed_wifi",standard
+P010,Redwood Internet Services,"internet,voice",basic
+P011,Bayou Broadband,"internet,voice,video",premium
+P012,Timber Creek Telecom,"internet",basic
+P013,Northstar Communications,"internet,voice,managed_wifi",standard
+P014,Desert Link Networks,"internet,voice",standard
+P015,Cascade Fiber,"internet,voice,video,managed_wifi",premium
+P016,Ironwood Internet,"internet",basic
+P017,Silver Lake Telecom,"internet,voice",standard
+P018,Horizon Broadband,"internet,voice,video",standard
+P019,Pine Ridge Communications,"internet,managed_wifi",standard
+P020,Stonebridge Networks,"internet,voice",basic
+P021,Clearwater ISP,"internet,voice,video",premium
+P022,Maple Leaf Telecom,"internet",basic
+P023,Rio Grande Communications,"internet,voice,managed_wifi",standard
+P024,Granite State Fiber,"internet,voice",standard
+P025,Sunbelt Broadband,"internet,voice,video,managed_wifi",premium
+P026,Cedar Valley Networks,"internet",basic
+P027,Appalachian Connect,"internet,voice",standard
+P028,Golden Gate ISP,"internet,voice,video",standard
+P029,Lone Star Telecom,"internet,managed_wifi",standard
+P030,Evergreen Broadband,"internet,voice",basic

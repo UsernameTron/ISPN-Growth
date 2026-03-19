@@ -1,0 +1,13 @@
+state,status,partner_ids
+Texas,active,"P001,P005,P029"
+California,approved,"P002,P010,P028"
+Virginia,imminent,"P003,P008,P018"
+Ohio,active,"P004,P011,P024"
+Louisiana,approved,"P006,P011"
+Montana,none,"P007,P009"
+Colorado,imminent,"P012,P015,P021"
+North Carolina,active,"P013,P017,P027"
+Arizona,none,"P014,P016"
+New York,approved,"P019,P023,P025"
+Michigan,imminent,"P020,P026"
+Georgia,active,"P022,P030"

@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.*
+output/
+context/
+state/
+plans/
+outputs/
+.DS_Store
+*.xlsx
+!data/*.csv

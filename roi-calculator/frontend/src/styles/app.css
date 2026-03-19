@@ -1,0 +1,524 @@
+/* ============================================
+   ISPN ROI Calculator — Global Styles
+   Colors: navy #1a365d, blue #2b6cb0,
+           green #38a169, amber #d69e2e
+   ============================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: #1a202c;
+  background: #f7fafc;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Layout ---- */
+
+.app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+}
+
+.app-header h1 {
+  color: #1a365d;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.app-subtitle {
+  color: #4a5568;
+  margin-top: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.app-main {
+  flex: 1;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 2rem 0 1rem;
+  color: #a0aec0;
+  font-size: 0.8rem;
+}
+
+/* ---- Step Indicator ---- */
+
+.step-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  color: #a0aec0;
+}
+
+.step {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  transition: all 0.2s;
+}
+
+.step.active {
+  background: #1a365d;
+  color: #fff;
+  font-weight: 600;
+}
+
+.step-divider {
+  color: #cbd5e0;
+}
+
+/* ---- Error Banner ---- */
+
+.error-banner {
+  background: #fff5f5;
+  border: 1px solid #fc8181;
+  color: #c53030;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.error-dismiss {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: #c53030;
+  cursor: pointer;
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+/* ---- Validation Errors ---- */
+
+.validation-errors {
+  background: #fffbeb;
+  border: 1px solid #d69e2e;
+  color: #744210;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.validation-errors ul {
+  margin-top: 0.25rem;
+  padding-left: 1.25rem;
+}
+
+/* ---- Form ---- */
+
+.input-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-section {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.25rem;
+  background: #fff;
+}
+
+.form-section legend {
+  font-weight: 600;
+  color: #1a365d;
+  padding: 0 0.5rem;
+  font-size: 0.95rem;
+}
+
+.form-group {
+  margin-top: 0.75rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #4a5568;
+  margin-bottom: 0.25rem;
+}
+
+.form-group input[type='number'] {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.form-group input[type='number']:focus {
+  outline: none;
+  border-color: #2b6cb0;
+  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.15);
+}
+
+/* ---- Checkboxes ---- */
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #2d3748;
+  cursor: pointer;
+}
+
+.checkbox-label input[type='checkbox'] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: #2b6cb0;
+}
+
+/* ---- Slider ---- */
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.slider-row input[type='range'] {
+  flex: 1;
+  accent-color: #2b6cb0;
+}
+
+.slider-value {
+  min-width: 6rem;
+  font-size: 0.85rem;
+  color: #4a5568;
+  font-variant-numeric: tabular-nums;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #2b6cb0;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-decoration: underline;
+}
+
+/* ---- Buttons ---- */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.5rem;
+  background: #2b6cb0;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #1a365d;
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.5rem;
+  background: #fff;
+  color: #2b6cb0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid #2b6cb0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+  background: #ebf8ff;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* ---- Loading Spinner ---- */
+
+.loading-spinner::after {
+  content: '';
+  display: inline-block;
+  width: 0.85rem;
+  height: 0.85rem;
+  margin-left: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---- Savings Highlight ---- */
+
+.savings-highlight {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.savings-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.savings-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #718096;
+  margin-bottom: 0.25rem;
+}
+
+.savings-value {
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #38a169;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Chart ---- */
+
+.chart-container {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.chart-container h3 {
+  font-size: 1rem;
+  color: #1a365d;
+  margin-bottom: 0.75rem;
+}
+
+/* ---- Comparison Table ---- */
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.comparison-table th {
+  background: #1a365d;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.comparison-table tbody tr:nth-child(even) {
+  background: #f7fafc;
+}
+
+.comparison-table tbody tr:hover {
+  background: #ebf8ff;
+}
+
+.comparison-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.comparison-table .positive {
+  color: #38a169;
+}
+
+.comparison-table .negative {
+  color: #c53030;
+}
+
+.comparison-table .total-row {
+  background: #edf2f7;
+  border-top: 2px solid #1a365d;
+}
+
+/* ---- Recommendation ---- */
+
+.recommendation-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.recommendation-badge {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.recommendation-detail {
+  max-width: 600px;
+  color: #4a5568;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.key-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+.metric-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.metric-label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #718096;
+  margin-bottom: 0.25rem;
+}
+
+.metric-value {
+  display: block;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1a365d;
+  font-variant-numeric: tabular-nums;
+}
+
+.cost-summary {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cost-summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.cost-summary-row .num {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 600px) {
+  .app-header h1 {
+    font-size: 1.35rem;
+  }
+
+  .savings-highlight,
+  .key-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .button-row {
+    flex-direction: column;
+  }
+
+  .savings-value,
+  .metric-value {
+    font-size: 1.1rem;
+  }
+
+  .comparison-table {
+    font-size: 0.8rem;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.4rem 0.5rem;
+  }
+}

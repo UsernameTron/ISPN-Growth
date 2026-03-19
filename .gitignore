@@ -1,0 +1,38 @@
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# Node
+node_modules/
+dist/
+
+# Environment
+.env
+.env.*
+
+# Private / gitignored per CLAUDE.md governance
+context/
+state/
+plans/
+outputs/
+
+# Generated reports
+gcs-engine/output/
+roi-calculator/output/
+
+# Claude Code local settings (personal, not shared)
+.claude/settings.local.json
+
+# IDE
+.vscode/
+.idea/
+
+# Claude Code Ecosystem (reference only — not part of this repo)
+Claude MCP Ecosystem copy/
+claude-code-factory copy/
