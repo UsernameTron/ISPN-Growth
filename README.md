@@ -71,7 +71,7 @@ pytest tests/               # run tests
 ## Monorepo Commands
 
 ```bash
-make test              # run all 162 tests across both projects
+make test              # run all 177 tests across both projects
 make test-roi-backend  # ROI Calculator backend only
 make test-roi-frontend # ROI Calculator frontend only
 make test-gcs          # GCS Engine only
@@ -108,7 +108,7 @@ ISPN Growth/
 │   │   ├── signals/        # 8 signal scorers (0–3 each)
 │   │   ├── scoring/        # Composite engine + recommender
 │   │   └── output/         # Excel report + markdown summary
-│   ├── tests/              # pytest suite (125 tests)
+│   ├── tests/              # pytest suite
 │   └── data/               # Input CSVs
 ├── .github/workflows/      # CI/CD pipeline
 ├── Makefile                # Monorepo test runner
@@ -119,7 +119,7 @@ ISPN Growth/
 
 ## Current Status
 
-All critical remediation items resolved. 162 tests passing across both projects. GCS Engine is fully remediated. See `Fix-codebase.md` for the complete audit trail.
+All critical remediation items resolved. 177 tests passing across both projects (ROI backend 42, ROI frontend 10, GCS Engine 125). Structured JSON logging, request ID tracking, and normalized error responses in place. CI/CD pipeline green. See `Fix-codebase.md` for the complete audit trail and `docs/DEVOPS-HANDOFF.md` for operational deployment guidance.
 
 ---
 
@@ -170,17 +170,13 @@ Option B — **Separate services** (recommended for scale):
 - Serve `frontend/dist/` from a CDN (Netlify, Vercel, S3+CloudFront)
 - Point `VITE_API_BASE` at the API URL
 
-**4. Fix the healthcheck endpoint path**
-
-The Dockerfile healthcheck hits `/api/v1/health` but the actual endpoint is `/api/health`. Update line 43 in the Dockerfile before deploying.
-
-**5. Lock down CORS for production**
+**4. Lock down CORS for production**
 
 Current default: `["http://localhost:5173"]`. Override via `CORS_ORIGINS` env var with the actual production domain. Also consider setting `allow_credentials=False` in `api/main.py` (currently `True` but no auth exists).
 
 ### GCS Engine — Operational Deployment
 
-**6. Replace stub connectors with live data sources**
+**5. Replace stub connectors with live data sources**
 
 All 6 connectors follow the same `get_data() -> pd.DataFrame` interface. To swap:
 
@@ -199,7 +195,7 @@ Connectors to implement:
 | Service Mix | `service_mix.py` | Manual CSV or CRM | partner_id, services list |
 | BEAD | `bead_data.py` | BEAD program tracker | state, status, partner_ids |
 
-**7. Schedule the pipeline**
+**6. Schedule the pipeline**
 
 GCS Engine runs as a CLI. For monthly scoring:
 
@@ -212,7 +208,7 @@ Output: `output/gcs_report_YYYY-MM.xlsx` + CSV.
 
 ### Infrastructure — Both Projects
 
-**8. Set up secrets management**
+**7. Set up secrets management**
 
 Neither project currently requires secrets (no database, no auth). When live connectors are added to GCS Engine, store API keys in:
 - AWS Secrets Manager / Parameter Store
@@ -221,14 +217,14 @@ Neither project currently requires secrets (no database, no auth). When live con
 
 Never commit `.env` files — they are gitignored.
 
-**9. Add monitoring**
+**8. Add monitoring**
 
 The ROI Calculator now has request logging middleware (`api/middleware/logging_middleware.py`) that logs method, path, status, and duration. Connect this to your observability stack:
 - Structured JSON logs → CloudWatch / Datadog / ELK
 - Healthcheck endpoint: `GET /api/health`
 - Key metric: response time on `POST /api/calculate`
 
-**10. DNS and TLS**
+**9. DNS and TLS**
 
 - Point your chosen domain at the deployment target
 - Enable TLS (Let's Encrypt, ACM, or platform-managed)
