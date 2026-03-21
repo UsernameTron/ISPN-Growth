@@ -5,10 +5,9 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
 
 from api.config import settings
-from api.middleware.error_handler import ErrorHandlerMiddleware
+from api.middleware.error_handler import ErrorHandlerMiddleware, error_response
 from api.middleware.logging_middleware import LoggingMiddleware
 from api.routers import calculate, health
 
@@ -39,20 +38,23 @@ def create_app() -> FastAPI:
 
     @app.exception_handler(RequestValidationError)
     async def validation_exception_handler(request: Request, exc: RequestValidationError):
-        return JSONResponse(
-            status_code=422,
-            content={
-                "success": False,
-                "error": "Validation error",
-                "detail": exc.errors(),
-            },
+        request_id = getattr(request.state, "request_id", None)
+        return error_response(
+            422,
+            "validation_error",
+            "Validation error",
+            detail=exc.errors(),
+            request_id=request_id,
         )
 
     @app.exception_handler(Exception)
     async def unhandled_exception_handler(request: Request, exc: Exception):
-        return JSONResponse(
-            status_code=500,
-            content={"success": False, "error": str(exc), "detail": "Internal server error"},
+        request_id = getattr(request.state, "request_id", None)
+        return error_response(
+            500,
+            "internal_server_error",
+            "Internal server error",
+            request_id=request_id,
         )
 
     app.include_router(health.router, prefix="/api")
