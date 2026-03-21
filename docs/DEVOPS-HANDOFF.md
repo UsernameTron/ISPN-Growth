@@ -197,3 +197,14 @@ Shared network: `app-network`.
 4. **No rate limiting** — Public calculator endpoint has no request throttling.
 5. **Frontend proxy only in dev** — Production deployment needs reverse proxy config (nginx/Caddy) or backend static file serving.
 6. **No HTTPS termination** — Must be handled by load balancer or reverse proxy in production.
+
+---
+
+## Contact
+
+| Role | Contact |
+|------|---------|
+| Project Owner | Pete Connor (cpconnor) |
+| Repository | `ISPN Growth` monorepo |
+
+For questions about ISPN financial constants or business rules, contact the ISPN operations team.
