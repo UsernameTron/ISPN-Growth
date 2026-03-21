@@ -13,7 +13,7 @@
 
 ## Verification
 - [x] All 162 local tests pass (make test)
-- [ ] CI pipeline green on GitHub (pending commit c2799b6)
+- [x] CI pipeline green on GitHub (verified 2026-03-20, all runs since c2799b6 passing)
 - [x] No regressions introduced
 - [x] Diff reviewed: only intended files changed
 
@@ -31,10 +31,23 @@
 - Three rounds of CI debugging culminating in the real root cause (gitignore)
 
 ### What remains
-- Verify CI green on c2799b6
-- Tag GCS Engine v1.0.0 after CI confirmation
-- Begin DevOps operational checklist for production deployment
-- ROI middleware stubs exist but may need refinement for production logging
+- ~~Verify CI green on c2799b6~~ Done 2026-03-20
+- ~~Tag GCS Engine v1.0.0 after CI confirmation~~ Tagged 2026-03-21
+- ~~Begin DevOps operational checklist for production deployment~~ Done 2026-03-21 (docs/DEVOPS-HANDOFF.md)
+- ~~ROI middleware stubs exist but may need refinement for production logging~~ Done 2026-03-21 (structured logging + request IDs + error envelope)
 
 ### Open decisions
 - After-hours premium calculation: is 1.5x full rate correct or 1.0x + 0.5x extra? (needs business confirmation)
+
+---
+
+# Completed: DevOps Handoff + ROI Middleware Refinement
+**Branch**: `chore/devops-handoff-and-middleware`
+**Completed**: 2026-03-21
+
+## Commits
+1. Fix Dockerfile healthcheck path (`/api/v1/health` → `/api/health`)
+2. Create `docs/DEVOPS-HANDOFF.md` — full operational handoff for both projects
+3. Enhance LoggingMiddleware — structured JSON logging + request ID tracking
+4. Normalize error responses — consistent `{success, error, message, detail?, request_id?}` envelope
+5. Add 15 middleware/endpoint tests (42 total ROI tests now)
